@@ -34,7 +34,7 @@ public class DeleteArticlePage
     
     WebElement globalfeed;
     
-    @FindBy(xpath = "(//a[@class=\"author\"])[1]")
+    @FindBy(xpath = "(//a[@class='author'])[1]")
     
 	WebElement profile;
 
