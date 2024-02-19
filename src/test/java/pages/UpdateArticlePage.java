@@ -26,7 +26,7 @@ public class UpdateArticlePage
     
     WebElement articleabout;
     
-    @FindBy(xpath="//textArea[@rows='8']")
+    @FindBy(xpath="//textArea[@name='body']")
     
     WebElement textarea;
     
