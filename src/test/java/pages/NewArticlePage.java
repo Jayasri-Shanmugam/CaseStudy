@@ -82,11 +82,11 @@ public class NewArticlePage
 		   
 	   }  
 	   
-	   public WebElement getNewArticleElement(WebDriver driver,String articleTitle) 
+	   public WebElement getNewArticleElement(WebDriver driver,String articletitle) 
 	   
 	   {
 		   
-		   WebElement element=driver.findElement(By.xpath("//h1[contains(text(),'"+articleTitle+"')]"));
+		   WebElement element=driver.findElement(By.xpath("//h1[contains(text(),'"+articletitle+"')]"));
 		   
 	       return element;
 	       

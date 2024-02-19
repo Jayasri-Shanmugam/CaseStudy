@@ -33,6 +33,11 @@ public class DeleteArticlePage
     @FindBy(xpath="(//button)[2]")
     
     WebElement globalfeed;
+    
+    @FindBy(xpath = "(//a[@class=\"author\"])[1]")
+    
+	WebElement profile;
+
 
 
 	 public DeleteArticlePage(WebDriver driver)
@@ -54,10 +59,10 @@ public class DeleteArticlePage
 		 
 	 }
 	 
-	 public WebElement delArticleLocate(WebDriver driver,String articleTitle) 
+	 public WebElement delArticleLocate(WebDriver driver,String articletitle) 
 	 {
 		 
-		WebElement articletodelete=driver.findElement(By.xpath("//h1[contains(text(),'"+articleTitle+"')]"));
+		WebElement articletodelete=driver.findElement(By.xpath("//h1[contains(text(),'"+articletitle+"')]"));
 		
 		return articletodelete;
 
@@ -84,5 +89,11 @@ public class DeleteArticlePage
 		 return checkarticle.getText();
 		 
 	 }
+	 
+	 public void profilenavigation()
+		{
+			profile.click();
+			
+		}
  
 }

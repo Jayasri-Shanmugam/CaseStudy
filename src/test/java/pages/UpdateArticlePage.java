@@ -45,24 +45,28 @@ public class UpdateArticlePage
     @FindBy(xpath="(//button)[2]")
     
     WebElement globalfeed;
+    
+    @FindBy(xpath = "(//a[@class=\"author\"])[1]")
+    
+	WebElement profile;
 
 
      
-     public WebElement articleTitleElement(WebDriver driver,String articleTitle)
+     public WebElement articleTitleElement(WebDriver driver,String articletitle)
      
      {
     	 
-    	 WebElement element=driver.findElement(By.xpath("//h1[contains(text(),'"+articleTitle+"')]"));
+    	 WebElement element=driver.findElement(By.xpath("//h1[contains(text(),'"+articletitle+"')]"));
     	 
     	 return element;
     	 
      }
      
-     public WebElement getUpdateArticleElement(WebDriver driver,String updatedarticleTitle)
+     public WebElement getUpdateArticleElement(WebDriver driver,String updatedarticletitle)
      
      {
     	 
-    	 WebElement element=driver.findElement(By.xpath("//h1[contains(text(),'"+updatedarticleTitle+"')]"));
+    	 WebElement element=driver.findElement(By.xpath("//h1[contains(text(),'"+updatedarticletitle+"')]"));
     	 
     	 return element;
     	 
@@ -118,6 +122,13 @@ public class UpdateArticlePage
 	{
 		
 		return check.getText();
+		
+	}
+	
+	public void profilenavigation()
+	
+	{
+		profile.click();
 		
 	}
 	 	

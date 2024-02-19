@@ -92,12 +92,14 @@ public class ArticleStepDefinition
 		public void should_display_the_invalid_login_message(DataTable dataTable) 
 		
 		{
-
+			
 			List<String> msgs=dataTable.asList();
+			
+			String expectedmsg=msgs.get(0);
+			
+		    Assert.assertEquals(ArticlePagelogin.checkInValidLogin(),expectedmsg);
 
-			String expmsg=msgs.get(0);
-
-		    Assert.assertEquals(ArticlePagelogin.checkInValidLogin(),expmsg);
+			
 
 		}
 
@@ -124,10 +126,9 @@ public class ArticleStepDefinition
 		{
 
 			List<String> msgs=dataTable.asList();
-
-			String expmsg=msgs.get(0);
-
-		    Assert.assertEquals(ArticlePagelogin.checkValidLogin(),expmsg);
+			String username=msgs.get(0);
+			WebElement element=ArticlePagelogin.validUserName(driver,username);
+		    Assert.assertEquals(ArticlePagelogin.checkValidLogin(element),username);
 
 		}
 
@@ -149,7 +150,7 @@ public class ArticleStepDefinition
 
 			List<Map<String,String>> article=dataTable.asMaps();
 
-			String articleTitle=article.get(0).get("articleTitle");
+			String articletitle=article.get(0).get("articleTitle");
 
 			String  description=article.get(0).get("description");
 
@@ -157,7 +158,7 @@ public class ArticleStepDefinition
 
 			String tags=article.get(0).get("tags");
 
-			newArticlePage.newArticle(articleTitle,description,body,tags);
+			newArticlePage.newArticle(articletitle,description,body,tags);
 
 		}
 
@@ -169,9 +170,9 @@ public class ArticleStepDefinition
 
 			List<String> msgs=dataTable.asList();
 
-			String expmsg=msgs.get(0);
+			String expectedmsg=msgs.get(0);
 
-		    Assert.assertEquals(newArticlePage.duplicateArticleValidate(),expmsg);
+		    Assert.assertEquals(newArticlePage.duplicateArticleValidate(),expectedmsg);
 
 		}
 
@@ -184,7 +185,7 @@ public class ArticleStepDefinition
 
 			List<Map<String,String>> article=dataTable.asMaps();
 
-			String articleTitle=article.get(0).get("articleTitle");
+			String articletitle=article.get(0).get("articleTitle");
 
 			String  description=article.get(0).get("description");
 
@@ -192,7 +193,7 @@ public class ArticleStepDefinition
 
 			String tags=article.get(0).get("tags");
 
-			newArticlePage.newArticle(articleTitle,description,body,tags);
+			newArticlePage.newArticle(articletitle,description,body,tags);
 
 		}
 
@@ -204,11 +205,11 @@ public class ArticleStepDefinition
 
 			List<String> msgs=dataTable.asList();
 
-			String expmsg=msgs.get(0);
+			String expectedmsg=msgs.get(0);
 
-			WebElement ele=newArticlePage.getNewArticleElement(driver,expmsg);
+			WebElement element=newArticlePage.getNewArticleElement(driver,expectedmsg);
 
-		    Assert.assertEquals(newArticlePage.newArticleValidate(ele),expmsg);
+		    Assert.assertEquals(newArticlePage.newArticleValidate(element),expectedmsg);
 
 		}
 
@@ -219,7 +220,7 @@ public class ArticleStepDefinition
 		
 		{
 
-			updateArticlePage.homePage();
+			updateArticlePage.profilenavigation();
 
 		}
 
@@ -231,9 +232,9 @@ public class ArticleStepDefinition
 
 			List<Map<String,String>> article=dataTable.asMaps();
 
-			String articleTitle=article.get(0).get("articleTitle");
+			String articletitle=article.get(0).get("articleTitle");
 
-			String updateArticleTitle=article.get(0).get("updatedArticleTitle");
+			String updatearticletitle=article.get(0).get("updatedArticleTitle");
 
 			String  description=article.get(0).get("description");
 
@@ -241,9 +242,9 @@ public class ArticleStepDefinition
 
 			String tags=article.get(0).get("tags");
 
-			WebElement locateArticle=updateArticlePage.articleTitleElement(driver,articleTitle);
+			WebElement locatearticletitle=updateArticlePage.articleTitleElement(driver,articletitle);
 
-			updateArticlePage.update(locateArticle,updateArticleTitle,description,body,tags);
+			updateArticlePage.update(locatearticletitle,updatearticletitle,description,body,tags);
 
 
 		}
@@ -256,11 +257,11 @@ public class ArticleStepDefinition
 
 			List<String> msgs=dataTable.asList();
 
-			String expmsg=msgs.get(0);
+			String expectedmsg=msgs.get(0);
 
-			WebElement ele=updateArticlePage.getUpdateArticleElement(driver, expmsg);
+			WebElement element=updateArticlePage.getUpdateArticleElement(driver, expectedmsg);
 
-			Assert.assertEquals(updateArticlePage.updateArticleValidate(ele),expmsg);
+			Assert.assertEquals(updateArticlePage.updateArticleValidate(element),expectedmsg);
 
 		}
 
@@ -270,7 +271,7 @@ public class ArticleStepDefinition
 		
 		{
 
-			deleteArticlePage.home();
+			deleteArticlePage.profilenavigation();
 
 		}
 
@@ -282,11 +283,11 @@ public class ArticleStepDefinition
 
 			List<Map<String,String>> article=dataTable.asMaps();
 
-			String delTitle=article.get(0).get("articleName");
+			String deletearticletitle=article.get(0).get("articleName");
 
-			WebElement ele=deleteArticlePage.delArticleLocate(driver, delTitle);
+			WebElement element=deleteArticlePage.delArticleLocate(driver, deletearticletitle);
 
-		    deleteArticlePage.deleteArticle(ele);
+		    deleteArticlePage.deleteArticle(element);
 
 		}
 
@@ -298,9 +299,9 @@ public class ArticleStepDefinition
 
 			List<String> msgs=dataTable.asList();
 
-			String expmsg=msgs.get(0);
+			String expectedmsg=msgs.get(0);
 
-			Assert.assertEquals(deleteArticlePage.deleteValidate(),expmsg);
+			Assert.assertEquals(deleteArticlePage.deleteValidate(),expectedmsg);
 
 		}
 

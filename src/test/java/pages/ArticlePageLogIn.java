@@ -1,5 +1,6 @@
 package pages;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 import org.openqa.selenium.WebElement;
@@ -27,15 +28,12 @@ public class ArticlePageLogIn
     
     WebElement loginbtn;
     
-    @FindBy(xpath="//div[contains(text(),'Jai')]")
-    
-    WebElement validatesuccesslogin;
-    
     @FindBy(xpath="//li[contains(text(),'Wrong email/password combination')]")
     
     WebElement invalidlogincheck;
     
     public ArticlePageLogIn(WebDriver driver)
+    
     
     {
     	
@@ -50,6 +48,14 @@ public class ArticlePageLogIn
   	  loginbutton.click();
   	  
     }
+    
+    public WebElement validUserName(WebDriver driver,String username) 
+    
+    {
+        	WebElement element=driver.findElement(By.xpath("//div[contains(text(),'"+username+"')]"));
+        	
+        	return element;
+     }
     
     public void inValidLoginTest(String strmail,String strpassword)
     
@@ -78,11 +84,11 @@ public class ArticlePageLogIn
     	   
     }
     
-   public String checkValidLogin()
+   public String checkValidLogin(WebElement element)
    
    {
 	   
-    	 return validatesuccesslogin.getText();
+    	 return element.getText();
     	 
    }
  
