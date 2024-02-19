@@ -126,8 +126,11 @@ public class ArticleStepDefinition
 		{
 
 			List<String> msgs=dataTable.asList();
+			
 			String username=msgs.get(0);
+			
 			WebElement element=ArticlePagelogin.validUserName(driver,username);
+			
 		    Assert.assertEquals(ArticlePagelogin.checkValidLogin(element),username);
 
 		}
