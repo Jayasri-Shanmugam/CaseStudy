@@ -52,7 +52,7 @@ When User create the new Article
        
 Then Should display the new Article Title
 
-       |Amazon S|
+       |Amazon S3|
  
 Scenario: User update the Article
 
